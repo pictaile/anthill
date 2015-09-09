@@ -1,0 +1,3 @@
+anthill_start_homepage:
+    path:    /
+    defaults: { _controller: AnthillStartBundle:Default:index }

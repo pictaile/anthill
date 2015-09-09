@@ -1,0 +1,4 @@
+anthill_start:
+    resource: "@AnthillStartBundle/Resources/config/routing.yml"
+    prefix:   /
+
