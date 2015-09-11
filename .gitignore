@@ -5,6 +5,7 @@ README.md
 !app/cache/.gitkeep
 /app/config/parameters.yml
 /app/logs/*
+app/DoctrineMigrations/*
 !app/logs/.gitkeep
 /app/phpunit.xml
 /bin/

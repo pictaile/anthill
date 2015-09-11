@@ -1,0 +1,27 @@
+AnthillStartBundle\Entity\StartMenu:
+    type: entity
+    table: null
+    repositoryClass: AnthillStartBundle\Entity\StartMenuRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name_ru:
+            type: string
+            length: 255
+        name_ua:
+            type: string
+            length: 255
+        name_en:
+            type: string
+            length: 255
+        href:
+            type: string
+            length: 255
+        state:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }

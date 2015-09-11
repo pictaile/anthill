@@ -1,4 +1,15 @@
+anthill_tenders:
+    resource: "@AnthillTendersBundle/Resources/config/routing.yml"
+    prefix:   /
+
+anthill_admin:
+    resource: "@AnthillAdminBundle/Resources/config/routing.yml"
+    prefix:   /
+
 anthill_start:
     resource: "@AnthillStartBundle/Resources/config/routing.yml"
     prefix:   /
+
+
+
 

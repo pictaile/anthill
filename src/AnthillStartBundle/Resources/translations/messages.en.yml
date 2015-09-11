@@ -1,0 +1,9 @@
+welcome: Anthill - business portal for serious people
+symfony2:
+    is:
+        great: Symfony2 is great
+        amazing: Symfony2 is amazing
+    has:
+        bundles: Symfony2 has bundles
+user:
+    login: Login

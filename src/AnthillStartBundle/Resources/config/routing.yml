@@ -1,3 +1,10 @@
-anthill_start_homepage:
+anthill_index_homepage:
     path:    /
-    defaults: { _controller: AnthillStartBundle:Default:index }
+    defaults: { _controller: AnthillStartBundle:Default:index}
+
+
+anthill_start_homepage:
+    pattern:   /{_locale}/
+    defaults:  { _controller: AnthillStartBundle:Default:start, _locale: en }
+    requirements:
+        _locale: en|ru|ua
