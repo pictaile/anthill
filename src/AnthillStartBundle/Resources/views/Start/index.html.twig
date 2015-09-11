@@ -1,5 +1,30 @@
 {% extends 'AnthillStartBundle::main.html.twig' %}
 
-{#{% trans %}welcome{% endtrans %}#}
 
-{#{{  dump(menu) }}#}
+{% block header %}
+    <div class="header">
+        <div class="header_table-bl">
+            <div class="header_left-i">
+                <p>{% trans %}header.welcome{% endtrans %}</p>
+            </div>
+            <div class="header_medium-i">
+                <p class="provide_services-i">{% trans %}header.for_whom.provide_services{% endtrans %}</p>
+                <ul class="hr_list_st-ul">
+                    <li class="hr_list_st-li">{% trans %}header.for_whom.for_workers_employers{% endtrans %}</li>
+                    <li class="hr_list_st-li">{% trans %}header.for_whom.for_bussines{% endtrans %}</li>
+                </ul>
+            </div>
+            <div class="for_logo"></div>
+        </div>
+    </div>
+
+    <div class="top_menu">
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+{% endblock %}
+
+

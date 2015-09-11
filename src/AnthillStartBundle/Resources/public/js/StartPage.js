@@ -9,5 +9,5 @@
 $(document).ready(default_init);
 
 function default_init(){
-    alert(222)
+//    alert(222)
 }

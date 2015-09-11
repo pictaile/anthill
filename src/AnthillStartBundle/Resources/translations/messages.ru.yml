@@ -1,9 +1,18 @@
-welcome: Муравейник - деловой портал, для серьезных людей
-symfony2:
-    is:
-        great: Symfony2 is great
-        amazing: Symfony2 is amazing
-    has:
-        bundles: Symfony2 has bundles
-user:
-    login: Login
+header:
+  welcome: Муравейник - деловой портал, для серьезных людей
+  for_whom:
+      provide_services: Предоставляем услуги:
+      for_workers_employers: для работников и работодателей
+      for_bussines: для крупного и среднего бизнеса
+
+top_menu:
+  create_tenders: создать
+  vacancies: вакансии
+  resume: вакансии
+  freelance: фриланс
+
+menu:
+  tenders: тендеры
+  vacancies: вакансии
+  resume: вакансии
+  freelance: фриланс
