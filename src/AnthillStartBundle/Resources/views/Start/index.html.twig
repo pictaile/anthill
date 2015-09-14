@@ -1,30 +1,62 @@
 {% extends 'AnthillStartBundle::main.html.twig' %}
 
+{% block header %}  {% include 'header/header.html.twig' %} {% endblock %}
 
-{% block header %}
-    <div class="header">
-        <div class="header_table-bl">
-            <div class="header_left-i">
-                <p>{% trans %}header.welcome{% endtrans %}</p>
-            </div>
-            <div class="header_medium-i">
-                <p class="provide_services-i">{% trans %}header.for_whom.provide_services{% endtrans %}</p>
-                <ul class="hr_list_st-ul">
-                    <li class="hr_list_st-li">{% trans %}header.for_whom.for_workers_employers{% endtrans %}</li>
-                    <li class="hr_list_st-li">{% trans %}header.for_whom.for_bussines{% endtrans %}</li>
-                </ul>
-            </div>
-            <div class="for_logo"></div>
+{% block content %}
+    <div class="top_position">
+        <h2 class="top_positions-title">Топ тендеры:</h2>
+        <div class="top_tenders">
+
+            <ul id="tenders" class="jcarousel-skin-tango">
+                <li>
+                    <div class="carousel-block-i">
+                        <a class="top_position-item-link" href="#" target="_blank">
+                            <div class="top_position-i">
+                                <p>
+                                    {% image '@AnthillStartBundle/Resources/public/images/1.jpg' %}
+                                    <img src="{{ asset_url }}" width="30%" alt="Example" />
+                                    {% endimage %}
+                                </p>
+                            </div>
+                            <div class="name-top-model-i">
+                                Круг,полоса инструментальная сталь Х12МФ,Р6М5,6ХВ2С Круг,полоса инструментальная сталь Х12МФ,Р6М5,6ХВ2С Круг,полоса инструментальная сталь Х12МФ,Р6М5,6ХВ2С
+                            </div>
+                            <div class="left-time">осталось: <span name="tenders_time">14 </span> часов <span name="tenders_min"> 33 </span>минуты</div>
+                        </a>
+                    </div>
+                </li>
+            </ul>
+
         </div>
+
+        <h2 class="top_positions-title">Топ вакансии:</h2>
+        <div class="top_vacancies">
+            <ul id="vacancies" class="jcarousel-skin-tango">
+                <li>
+                    <div class="carousel-block-i">
+                        <a class="top_position-item-link" href="#" target="_blank">
+                            <div class="top_position-i">
+                                <p>
+                                    {% image '@AnthillStartBundle/Resources/public/images/1.jpg' %}
+                                    <img src="{{ asset_url }}" width="30%" alt="Example" />
+                                    {% endimage %}
+                                </p>
+                            </div>
+                            <div class="name-top-model-i">
+                                Круг,полоса инструментальная сталь Х12МФ,Р6М5,6ХВ2С Круг,полоса инструментальная сталь Х12МФ,Р6М5,6ХВ2С Круг,полоса инструментальная сталь Х12МФ,Р6М5,6ХВ2С
+                            </div>
+                            <div class="left-time">осталось: <span name="tenders_time">14 </span> часов <span name="tenders_min"> 33 </span>минуты</div>
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
     </div>
 
-    <div class="top_menu">
-        <ul>
-            <li></li>
-            <li></li>
-            <li></li>
-        </ul>
-    </div>
+
 {% endblock %}
 
 
+
+{% block footer  %} {%  include "footer/footer.html.twig" %}{% endblock %}

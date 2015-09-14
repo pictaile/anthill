@@ -4,3 +4,9 @@ header:
       provide_services: Предоставляем услуги:
       for_workers_employers: для работников и работодателей
       for_bussines: для крупного и среднего бизнеса
+
+top_menu:
+  tenders: тендеры
+  vacancies: вакансии
+  resume: резюме
+  freelance: фриланс

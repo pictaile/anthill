@@ -1,11 +1,13 @@
 {% extends "::base.html.twig" %}
 
 {% block stylesheets %}
+
     {% stylesheets
-        '@AnthillStartBundle/Resources/public/css/bootstrap/*'
+    '@AnthillStartBundle/Resources/public/css/bootstrap/*'
+        '@AnthillStartBundle/Resources/public/css/jquery_carousel/*'
         '@AnthillStartBundle/Resources/public/css/*'
     %}
-                <link rel="stylesheet" href="{{ asset_url }}" />
+                <link rel="stylesheet"  type="text/css" media="screen" href="{{ asset_url }}" />
     {% endstylesheets  %}
 
 {% endblock %}
@@ -21,8 +23,10 @@
 
 {% block body %}
     <div class="wrapper">
-        {% block header  %}{% endblock %}
-        {% block content %}{% endblock %}
+        <div class="cont">
+            {% block header %}  {% endblock %}
+            {% block content %}{% endblock %}
+        </div>
         {% block footer  %}{% endblock %}
     </div>
 

@@ -1,0 +1,75 @@
+{% extends 'AnthillTendersBundle::main.html.twig' %}
+
+{% block header %}  {% include 'header/header.html.twig' %} {% endblock %}
+
+{% block content %}
+    <h2 class="top_positions-title-bl"> {% trans %}title_tenders{% endtrans %}</h2>
+    <div class="block-container">
+
+
+        <div class="inner-bl">
+            <div class="block_left">
+               <form class="tenders_filter">
+                    <div>
+                        <p class="list_category">Категории:</p>
+                        <input id="test1" type="checkbox" class="custom_checkbox"  value="test"/> <label for="test1" class="custom_label"> Электрооборудование</label>
+                        <input id="test2" type="checkbox" class="custom_checkbox"  value="test"/> <label for="test2" class="custom_label"> Категория 1</label>
+                        <input id="test3" type="checkbox" class="custom_checkbox"  value="test"/> <label for="test3" class="custom_label"> Тыц Тыц</label>
+                    </div>
+                    <div  class="block_inputs"><input class="input_text-normal all" type="text" placeholder="Название компании"/></div>
+                    <div class="block_inputs"><input class="input_text-normal all" type="text" placeholder="Название тендера"/></div>
+                    <div class="block_inputs"><input class="input_text-normal date" type="text" placeholder="Дата с"/> <input class="input_text-normal date_end" type="text" placeholder="Дата по"/></div>
+                   <div class="block_inputs right"><input class="input_button_normal" type="submit"  value="Поиск"/></div>
+                </form>
+            </div>
+
+            <div  class="block_right">
+
+            </div>
+
+            <div  class="block_center">
+                <div class="tenders_list">
+                  <div id="count_tenders" class="count_position">
+                    Всего найдено: <b>224 тендера</b>
+                  </div>
+                    <table class="tender_table">
+                        <tr>
+                            <td>1</td>
+                            <td>2</td>
+                            <td>3</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+
+            <div class="clear"></div>
+        </div>
+    </div>
+
+
+
+
+        {#<h2 class="top_positions-title-bl">Тендеры</h2>#}
+
+
+    {#<div class="tenders_block">#}
+        {#<div class="block_left">#}
+            {#<div class="tenders_facet">#}
+                {#111#}
+            {#</div>#}
+        {#</div>#}
+        {#<div class="block_medium">#}
+            {#Колонка 2#}
+        {#</div>#}
+        {#<div class="block_right">#}
+            {#Колонка 3#}
+        {#</div>#}
+    {#</div>#}
+    {#<div style="clear:both; height:10px;"></div>#}
+
+{% endblock %}
+
+
+
+{% block footer  %} {%  include "footer/footer.html.twig" %}{% endblock %}

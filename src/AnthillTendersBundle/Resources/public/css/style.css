@@ -1,0 +1,109 @@
+html, body {
+    margin:0px;
+    padding:0px;
+}
+.clear {
+    clear:both;
+}
+.input_text-normal{
+    font-size: 1.2em;
+    padding:0.3em;
+    color:#333333;
+    border:1px solid #4D2C02;
+}
+.input_text-normal.all{
+    width:100%;
+}
+.input_button_normal{
+    background: #50A97E;
+    padding:0.5em 1em;
+    border:1px solid #4D2C02;
+    color:#ffffff;
+}
+
+.block-container {
+    width:90%;
+    margin:20px auto;
+    position:relative;
+    display:block;
+    border-left:solid 300px #ffffff;
+    border-right:solid 300px #ffffff;
+}
+.inner-bl {
+    display:block;
+    position:relative;
+    margin-left:-300px;
+    margin-right:-300px;
+    padding:1px;
+}
+
+.block_left {
+    float:left;
+    position:relative;
+    width:300px;
+    left:0px;
+}
+.tenders_filter{
+    margin:0 20px 0 0;
+    padding:20px;
+    color:#ffffff;
+    background:#BB5735;
+    border-radius: 5px 5px 0 0;
+    -webkit-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.75);
+}
+.block_inputs{
+    margin-top:20px;
+}
+.block_inputs.right{
+    text-align: right;
+}
+.input_text-normal.date{
+    width:40%;
+}
+.input_text-normal.date_end{
+    width:40%;
+    margin-left:2.5em;
+}
+.list_category{
+    font-weight:bold;
+    font-size:1.2em;
+}
+.tender_table{
+    width:98%;
+    margin:20px auto;
+    background:red;
+}
+
+
+
+
+
+
+.block_right{
+    float:right;
+    position:relative;
+    width:300px;
+    right:0px;
+}
+.block_center {
+    margin-left:300px;
+    margin-right:300px;
+    position:relative;
+    display:block;
+    height:1%;
+}
+.tenders_list{
+    border-radius:5px;
+    border:2px solid #4D1502;
+}
+.count_position{
+    padding:10px;
+    background:#772205;
+    color:#ffffff;
+}
+
+
+
+

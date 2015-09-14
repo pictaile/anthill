@@ -6,10 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class TendersController extends Controller
 {
-    public function indexAction($name)
+    public function indexAction()
     {
-        $translated = $this->get('translator')->trans('welcome2');
-        var_dump($translated);die;
-        return $this->render('AnthillTendersBundle:Default:index.html.twig', array('name' => $name));
+        return $this->render('AnthillTendersBundle:Tenders:index.html.twig', array('name' => 'test'));
     }
 }

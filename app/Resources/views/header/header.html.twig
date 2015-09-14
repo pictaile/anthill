@@ -1,0 +1,37 @@
+
+    <div class="top_bock">
+        <div class="header">
+            <div class="header_table-bl">
+                <div class="header_left-i">
+                    <p>{% trans %}header.welcome{% endtrans %}</p>
+                    {% include 'header/auth/auth.html.twig' %}
+                </div>
+                <div class="header_medium-i">
+                    <p class="provide_services-i">{% trans %}header.for_whom.provide_services{% endtrans %}</p>
+                    <ul class="hr_list_st-ul">
+                        <li class="hr_list_st-li">{% trans %}header.for_whom.for_workers_employers{% endtrans %}</li>
+                        <li class="hr_list_st-li">{% trans %}header.for_whom.for_bussines{% endtrans %}</li>
+                    </ul>
+                </div>
+                <div class="for_logo"></div>
+            </div>
+        </div>
+
+
+        <ul class="top_menu">
+            <li class="top_menu-i">
+                <a class="top_menu-elem" href="{{ path('anthill_tenders_homepage') }}">{% trans %}top_menu.tenders{% endtrans %}</a>
+            </li>
+            <li class="top_menu-i">
+                <a class="top_menu-elem" href="#">{% trans %}top_menu.vacancies{% endtrans %}</a>
+            </li>
+            <li class="top_menu-i">
+                <a class="top_menu-elem" href="#">{% trans %}top_menu.resume{% endtrans %}</a>
+            </li>
+            {#<li class="top_menu-i">#}
+            {#<a class="top_menu-elem" href="#">{% trans %}top_menu.freelance{% endtrans %}</a>#}
+            {#</li>#}
+        </ul>
+    </div>
+
+

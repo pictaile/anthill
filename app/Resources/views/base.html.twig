@@ -9,7 +9,11 @@
 
     </head>
     <body>
-        {% block body %}{% endblock %}
-
+    {% spaceless %}
+        {% block body %}
+            {% block header %}{% endblock %}
+            {% block content %}{% endblock %}
+        {% endblock %}
+    {% endspaceless %}
     </body>
 </html>

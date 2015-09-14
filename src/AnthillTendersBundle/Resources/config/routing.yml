@@ -1,5 +1,5 @@
 anthill_tenders_homepage:
-    path:     /{_locale}/tenders/{name}
+    path:     /{_locale}/tenders/
     defaults: { _controller: AnthillTendersBundle:Tenders:index, _locale: ru }
     requirements:
         _locale: en|ru|ua

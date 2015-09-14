@@ -6,13 +6,7 @@ header:
       for_bussines: для крупного и среднего бизнеса
 
 top_menu:
-  create_tenders: создать
-  vacancies: вакансии
-  resume: вакансии
-  freelance: фриланс
-
-menu:
   tenders: тендеры
   vacancies: вакансии
-  resume: вакансии
+  resume: резюме
   freelance: фриланс
