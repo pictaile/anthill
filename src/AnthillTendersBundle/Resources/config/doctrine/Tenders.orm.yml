@@ -1,0 +1,26 @@
+AnthillTendersBundle\Entity\Tenders:
+    type: entity
+    table: null
+    repositoryClass: AnthillTendersBundle\Entity\TendersRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        company:
+            type: string
+            length: '255'
+        dateStart:
+            type: datetime
+            column: date_start
+        dateEnd:
+            type: datetime
+            column: date_end
+        description:
+            type: text
+    lifecycleCallbacks: {  }

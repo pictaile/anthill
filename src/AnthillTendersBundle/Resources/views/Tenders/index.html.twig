@@ -30,15 +30,25 @@
             <div  class="block_center">
                 <div class="tenders_list">
                   <div id="count_tenders" class="count_position">
-                    Всего найдено: <b>224 тендера</b>
+                    Всего найдено: <b> {{ pagination.getTotalItemCount }} тендера</b>
                   </div>
                     <table class="tender_table">
-                        <tr>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>3</td>
-                        </tr>
+                        {% for article in pagination %}
+
+                            <tr {% if loop.index is odd %}style="background:#ffffff !important"{% endif %}>
+                                <td>{{ article.name }}</td>
+                                <td>{{ article.company }}</td>
+                                <td>{{ article.description }}</td>
+                                <td>{{ article.dateStart|date('d.m.Y') }}</td>
+                                <td>{{ article.dateEnd|date('d.m.Y') }}</td>
+                            </tr>
+
+                        {% endfor %}
+
                     </table>
+                    <div class="navigation">
+                        {{ knp_pagination_render(pagination) }}
+                    </div>
                 </div>
             </div>
 

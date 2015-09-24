@@ -8,8 +8,6 @@ use AnthillStartBundle\Model\DefaultModel;
 
 class DefaultController extends Controller
 {
-
-
     public function indexAction()
     {
           return $this->redirectToRoute('anthill_start_homepage',['_locale'=>'ru']);
