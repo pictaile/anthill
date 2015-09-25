@@ -1,5 +1,13 @@
 anthill_tenders_homepage:
     path:     /{_locale}/tenders/
     defaults: { _controller: AnthillTendersBundle:Tenders:index, _locale: ru }
+    methods: []
     requirements:
         _locale: en|ru|ua
+
+anthill_tenders_homepage_get:
+    path:     /{_locale}/tenders/ajax/
+    defaults: { _controller: AnthillTendersBundle:Tenders:indexAjax, _locale: ru }
+    requirements:
+        _locale: en|ru|ua
+        _method: GET

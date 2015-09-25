@@ -164,4 +164,32 @@ class Tenders
     {
         return $this->description;
     }
+    /**
+     * @var string
+     */
+    private $category;
+
+
+    /**
+     * Set category
+     *
+     * @param string $category
+     * @return Tenders
+     */
+    public function setCategory($category)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return string 
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
 }

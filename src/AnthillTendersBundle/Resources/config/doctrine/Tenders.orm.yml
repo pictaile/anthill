@@ -9,6 +9,9 @@ AnthillTendersBundle\Entity\Tenders:
             generator:
                 strategy: AUTO
     fields:
+        category:
+            type: string
+            length: '255'
         name:
             type: string
             length: 255

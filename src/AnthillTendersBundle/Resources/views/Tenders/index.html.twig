@@ -12,13 +12,16 @@
                <form class="tenders_filter">
                     <div>
                         <p class="list_category">Категории:</p>
-                        <input id="test1" type="checkbox" class="custom_checkbox"  value="test"/> <label for="test1" class="custom_label"> Электрооборудование</label>
-                        <input id="test2" type="checkbox" class="custom_checkbox"  value="test"/> <label for="test2" class="custom_label"> Категория 1</label>
-                        <input id="test3" type="checkbox" class="custom_checkbox"  value="test"/> <label for="test3" class="custom_label"> Тыц Тыц</label>
+                         {% for category in categories %}
+                            <input id="category_{{ category.id }}" type="checkbox" name="category" class="custom_checkbox"  value="{{ category.id }}"/> <label for="category_{{ category.id }}" class="custom_label"> {{ category.name }}</label>
+                         {% endfor %}
                     </div>
-                    <div  class="block_inputs"><input class="input_text-normal all" type="text" placeholder="Название компании"/></div>
-                    <div class="block_inputs"><input class="input_text-normal all" type="text" placeholder="Название тендера"/></div>
-                    <div class="block_inputs"><input class="input_text-normal date" type="text" placeholder="Дата с"/> <input class="input_text-normal date_end" type="text" placeholder="Дата по"/></div>
+                    <div  class="block_inputs"><input class="input_text-normal all" name="name_company" type="text" placeholder="Название компании"/></div>
+                    <div class="block_inputs"><input class="input_text-normal all"  name="name_tender" type="text" placeholder="Название тендера"/></div>
+                    <div class="block_inputs">
+                        <input class="input_text-normal date" name="date_start" type="text" placeholder="Дата с"/>
+                        <input class="input_text-normal date_end" name="date_end"   type="text" placeholder="Дата по"/>
+                    </div>
                    <div class="block_inputs right"><input class="input_button_normal" type="submit"  value="Поиск"/></div>
                 </form>
             </div>
@@ -29,26 +32,7 @@
 
             <div  class="block_center">
                 <div class="tenders_list">
-                  <div id="count_tenders" class="count_position">
-                    Всего найдено: <b> {{ pagination.getTotalItemCount }} тендера</b>
-                  </div>
-                    <table class="tender_table">
-                        {% for article in pagination %}
-
-                            <tr {% if loop.index is odd %}style="background:#ffffff !important"{% endif %}>
-                                <td>{{ article.name }}</td>
-                                <td>{{ article.company }}</td>
-                                <td>{{ article.description }}</td>
-                                <td>{{ article.dateStart|date('d.m.Y') }}</td>
-                                <td>{{ article.dateEnd|date('d.m.Y') }}</td>
-                            </tr>
-
-                        {% endfor %}
-
-                    </table>
-                    <div class="navigation">
-                        {{ knp_pagination_render(pagination) }}
-                    </div>
+                    {% include 'AnthillTendersBundle:partial:tender_partial.html.twig' %}
                 </div>
             </div>
 
@@ -57,26 +41,6 @@
         </div>
     </div>
 
-
-
-
-        {#<h2 class="top_positions-title-bl">Тендеры</h2>#}
-
-
-    {#<div class="tenders_block">#}
-        {#<div class="block_left">#}
-            {#<div class="tenders_facet">#}
-                {#111#}
-            {#</div>#}
-        {#</div>#}
-        {#<div class="block_medium">#}
-            {#Колонка 2#}
-        {#</div>#}
-        {#<div class="block_right">#}
-            {#Колонка 3#}
-        {#</div>#}
-    {#</div>#}
-    {#<div style="clear:both; height:10px;"></div>#}
 
 {% endblock %}
 

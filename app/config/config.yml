@@ -42,6 +42,13 @@ twig:
 
 # Assetic Configuration
 assetic:
+    assets:
+        tender_libs:
+            inputs:
+                - '@AnthillStartBundle/Resources/public/js/libs/jquery-1.11.3.min.js'
+                - '@AnthillStartBundle/Resources/public/js/libs/jquery-ui.js'
+                - '@AnthillStartBundle/Resources/public/js/custom/Pagination.js'
+
     debug:          "%kernel.debug%"
     use_controller: false
     bundles:        ['AnthillStartBundle','AnthillTendersBundle']

@@ -27,12 +27,14 @@ class TendersRepository extends EntityRepository
         $dql   = "SELECT a FROM AnthillTendersBundle:Tenders a";
         $query = $em->createQuery($dql);
         $paginator  = $container->get('knp_paginator');
-
-        return $paginator->paginate(
+        $pagination = $paginator->paginate(
             $query,
             $request->query->getInt('page', $page),
             $container->getParameter('knp_paginator_max_count')
         );
+        $pagination->setUsedRoute('anthill_tenders_homepage');
+
+        return $pagination;
 
     }
 }
