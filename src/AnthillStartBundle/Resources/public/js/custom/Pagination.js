@@ -6,49 +6,84 @@
 
         // These options will be used as defaults
         options: {
-            facet:{
-
-            },
+            facet:'#facet',
             onselect:function(){}
         },
 
         _create: function() {
-            console.log(this.options);
             this._bind();
         },
 
         _bind:function(){
             var self = this;
+            $(this.element).on('submit',self.options.facet,function(e){
+                e.preventDefault();
+                self._send(false, self);
+            });
             $(this.element).on('click','.pagination a',function(e){
                 e.preventDefault();
                 self._send($(this), self);
-                history.pushState(null, null, $(this).attr('href'));
             });
             $(window).bind('popstate',function(e){
                 location.href = location.href;
             });
         },
 
-        // !!!!!!переписать шаблон пагинации так, что бы url на странице был с ajax!!!!!!!!
-        _send:function( pag, elem){
-            datafaset = elem._getData(pag,elem);
-            $.getJSON( 'ajax/',datafaset, function( data ) {
-                $('.tenders_list').html(data.page);
-            });
-            elem.options.onselect();
-        },
-        
-        _getData:function(pag){
-            var qs=pag.attr('href').split('?');
-            qs = qs[1];
-            var A=qs.split("&");
-            var B=null;
-            var Page = {};
-            for (var j=0;j<A.length;j++){
-                B=A[j].split("=");
-                Page[B[0]]=B[1];
+        _send:function( ispaginator, elem){
+            datafaset = elem._getFacetData($(elem.options.facet));
+            var data = {};
+            if(ispaginator != false){
+                data['page'] = elem._getPage(ispaginator);
             }
-            console.log(Page);
+            for( var i in datafaset){
+                data[i] =  datafaset[i];
+            }
+
+            $.getJSON( 'ajax/',data, function( data) {
+                $('.tenders_list').html(data.page);
+            }).always(function(){
+                var arr = this.url.split('?');
+                if(arr[1] == null){
+                    arr[1] = '';
+                }
+                var url = location.pathname +"?"+arr[1];
+                history.pushState(null, null, url);
+            });
+        },
+
+        _getPage:function(pag){
+            var result = {};
+            var qs = pag.attr('href').split('?');
+            qs = qs[1];
+            var A = qs.split("&");
+            var B = null;
+            var page = 1;
+            for (var j = 0;j < A.length;j++){
+                B=A[j].split("=");
+                if(B[0] == "page"){
+                    page = B[1];
+                }
+            }
+            return page;
+        },
+
+        _getFacetData: function(bl){
+            var result = {};
+            bl.find('[type=radio]:checked').each(function(i){
+                result[$(this).attr('name')] =  $(this).val();
+            });
+            bl.find('[type=checkbox]:checked').each(function(i){
+                if(result[$(this).attr('name')] == null){
+                    result[$(this).attr('name')] = [];
+                }
+                result[$(this).attr('name')].push($(this).val());
+            });
+            bl.find('[type=text]').each(function(){
+                if($(this).val().trim() != ""){
+                    result[$(this).attr('name')] = $(this).val();
+                }
+            });
+            return result;
         },
 
         _setOption: function( key, value ) {

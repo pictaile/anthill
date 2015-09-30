@@ -8,6 +8,7 @@
 
 namespace AnthillTendersBundle\Model;
 
+use AnthillTendersBundle\Layers\TendersBox\TendersBox;
 
 class TendersModel{
 
@@ -22,9 +23,40 @@ class TendersModel{
             ->getAllTenders();
     }
 
-    public function getPaginationTenders($page){
+    public function getPaginationTenders($data){
+        $TenderBox = new TendersBox();
+        $page = $this->checkPage($data);
+        $data = $this->dataTrim($data);
+        $TenderBox->setParams( $this->container,$page,$data);
+        return $this->getTenders($TenderBox);
+    }
+
+    private function checkPage(&$data){
+        if(isset($data['page']) ) {
+            $page = $data['page'];
+            unset($data['page']);
+            return $page;
+        }
+        return 1;
+    }
+
+    private function dataTrim($data){
+        foreach($data as $key => $value){
+            if($data[$key] == ''){
+                unset($data[$key]);
+            }
+        }
+        return $data;
+    }
+
+    private function getTenders($TenderBox){
+        $data = $TenderBox->getData();
+        if(empty($data)){
+            return $this->entity->getRepository('AnthillTendersBundle:Tenders')
+                ->getTendersPaginatorAll($TenderBox);
+        }
         return $this->entity->getRepository('AnthillTendersBundle:Tenders')
-            ->getTendersPaginator($this->container,$page);
+            ->getTendersPaginator($TenderBox);
     }
 
     public function getCategories(){
@@ -34,7 +66,6 @@ class TendersModel{
         foreach($response as $key =>$value){
             $result[$key]['name'] = $value['name_'.$this->locale];
             $result[$key]['id']   = $value['id'];
-
         }
         return $result;
     }

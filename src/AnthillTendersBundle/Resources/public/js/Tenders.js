@@ -9,12 +9,5 @@
 $(document).ready(default_init);
 
 function default_init(){
-    //$('.tender_table').on('test',function(){
-    //    alert($(this).attr('class'))
-    //});
-    //$('.count_position').click(function(){
-    //    $('.tender_table').trigger('test')
-    //})
-
     $('body').pagination();
 }

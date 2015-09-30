@@ -6,18 +6,17 @@
     <h2 class="top_positions-title-bl"> {% trans %}title_tenders{% endtrans %}</h2>
     <div class="block-container">
 
-
         <div class="inner-bl">
             <div class="block_left">
-               <form class="tenders_filter">
+               <form id="facet" class="tenders_filter">
                     <div>
                         <p class="list_category">Категории:</p>
                          {% for category in categories %}
-                            <input id="category_{{ category.id }}" type="checkbox" name="category" class="custom_checkbox"  value="{{ category.id }}"/> <label for="category_{{ category.id }}" class="custom_label"> {{ category.name }}</label>
+                            <input id="category_{{ category.id }}" type="checkbox" name="category[]" class="custom_checkbox"  value="{{ category.id }}"/> <label for="category_{{ category.id }}" class="custom_label"> {{ category.name }}</label>
                          {% endfor %}
                     </div>
-                    <div  class="block_inputs"><input class="input_text-normal all" name="name_company" type="text" placeholder="Название компании"/></div>
-                    <div class="block_inputs"><input class="input_text-normal all"  name="name_tender" type="text" placeholder="Название тендера"/></div>
+                    <div  class="block_inputs"><input class="input_text-normal all" name="company" type="text" placeholder="Название компании"/></div>
+                    <div class="block_inputs"><input class="input_text-normal all"  name="name" type="text" placeholder="Название тендера"/></div>
                     <div class="block_inputs">
                         <input class="input_text-normal date" name="date_start" type="text" placeholder="Дата с"/>
                         <input class="input_text-normal date_end" name="date_end"   type="text" placeholder="Дата по"/>
