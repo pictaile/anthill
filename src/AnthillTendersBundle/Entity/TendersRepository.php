@@ -40,7 +40,7 @@ class TendersRepository extends EntityRepository
         $qb = $tenderbox->getEntity()->createQueryBuilder()
                     ->select('a')
                     ->from('AnthillTendersBundle:Tenders', 'a')
-                    ->where("a.dateEnd > '".$end->format("Y-m-d H:i:s")."'");
+                    ->where("a.dateEnd <= '".$end->format("Y-m-d H:i:s")."'");
         if(isset($data['category'])){
             $orX = $qb->expr()->orX();
             foreach($data['category'] as $key => $value){
@@ -59,7 +59,8 @@ class TendersRepository extends EntityRepository
                 ->getQuery();
         }
         if(isset($data['date_start'])){
-            $qb->andWhere('a.dateStart='.$data['date_start']);
+            $start = new \DateTime($data['date_start']);
+            $qb->andWhere("a.dateStart >='".$start->format("Y-m-d H:i:s")."'");
         }
         $qb->orderBy("a.dateStart","desc");
         return $tenderbox->getPaginator()->paginate(

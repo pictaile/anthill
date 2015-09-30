@@ -29,7 +29,7 @@
             });
         },
 
-        _send:function( ispaginator, elem){
+        _send: function( ispaginator, elem){
             datafaset = elem._getFacetData($(elem.options.facet));
             var data = {};
             if(ispaginator != false){
