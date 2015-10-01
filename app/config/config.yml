@@ -43,11 +43,18 @@ twig:
 # Assetic Configuration
 assetic:
     assets:
-        tender_libs:
+        jquery_libs:
             inputs:
                 - '@AnthillStartBundle/Resources/public/js/libs/jquery-1.11.3.min.js'
                 - '@AnthillStartBundle/Resources/public/js/libs/jquery-ui.js'
+        base_app:
+            inputs:
+                - '@AnthillStartBundle/Resources/public/js/custom/Authorization.js'
+                - '@AnthillStartBundle/Resources/public/js/base.js'
+        tender_libs:
+            inputs:
                 - '@AnthillStartBundle/Resources/public/js/custom/Pagination.js'
+
 
     debug:          "%kernel.debug%"
     use_controller: false
@@ -118,4 +125,3 @@ knp_paginator:
     template:
         pagination: KnpPaginatorBundle:Pagination:sliding.html.twig
         sortable: KnpPaginatorBundle:Pagination:sortable_link.html.twig
-
