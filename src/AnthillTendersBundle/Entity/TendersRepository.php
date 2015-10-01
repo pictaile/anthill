@@ -32,36 +32,14 @@ class TendersRepository extends EntityRepository
 
     public function getTendersPaginator($tenderbox){
         $data = $tenderbox->getData();
-        $end = new \DateTime;
-        if(isset($data['date_end'])){
-            $end = new \DateTime($data['date_end']);
-            unset($data['date_end']);
-        }
         $qb = $tenderbox->getEntity()->createQueryBuilder()
                     ->select('a')
-                    ->from('AnthillTendersBundle:Tenders', 'a')
-                    ->where("a.dateEnd <= '".$end->format("Y-m-d H:i:s")."'");
-        if(isset($data['category'])){
-            $orX = $qb->expr()->orX();
-            foreach($data['category'] as $key => $value){
-                $orX->add( 'a.category='.$value);
-            }
-            $qb->andWhere($orX);
-        }
-        if(isset($data['company'])){
-            $qb->andWhere('a.company LIKE :company')
-                ->setParameter('company','%'.trim($data['company']).'%')
-                ->getQuery();
-        }
-        if(isset($data['name'])){
-            $qb->andWhere('a.name LIKE :name')
-                ->setParameter('name','%'.trim($data['name']).'%')
-                ->getQuery();
-        }
-        if(isset($data['date_start'])){
-            $start = new \DateTime($data['date_start']);
-            $qb->andWhere("a.dateStart >='".$start->format("Y-m-d H:i:s")."'");
-        }
+                    ->from('AnthillTendersBundle:Tenders', 'a');
+        $this->setDateEnd($data, $qb);
+        $this->setExistingCategory($data, $qb);
+        $this->setExistingCompany($data, $qb);
+        $this->setExistingName($data, $qb);
+        $this->setExistingDateStart($data, $qb);
         $qb->orderBy("a.dateStart","desc");
         return $tenderbox->getPaginator()->paginate(
             $qb,
@@ -69,4 +47,49 @@ class TendersRepository extends EntityRepository
             $tenderbox->getMAxCount()
         );
     }
+
+    private function setDateEnd($data, &$qb){
+        $end = new \DateTime;
+        $str_end ="a.dateEnd >= '";
+        if(isset($data['date_end'])){
+            $str_end ="a.dateEnd <= '";
+            $end = new \DateTime($data['date_end']);
+            unset($data['date_end']);
+        }
+        $qb->where($str_end.$end->format("Y-m-d H:i:s")."'");
+    }
+
+    private function setExistingCategory($data, &$qb){
+        if(isset($data['category'])){
+            $orX = $qb->expr()->orX();
+            foreach($data['category'] as $key => $value){
+                $orX->add( 'a.category='.$value);
+            }
+            $qb->andWhere($orX);
+        }
+    }
+
+    private function setExistingCompany($data, &$qb){
+        if(isset($data['company'])){
+            $qb->andWhere('a.company LIKE :company')
+                ->setParameter('company','%'.trim($data['company']).'%')
+                ->getQuery();
+        }
+    }
+
+    private function setExistingName($data, &$qb){
+        if(isset($data['name'])){
+            $qb->andWhere('a.name LIKE :name')
+                ->setParameter('name','%'.trim($data['name']).'%')
+                ->getQuery();
+        }
+    }
+
+    private function setExistingDateStart($data, &$qb){
+        if(isset($data['date_start'])){
+            $start = new \DateTime($data['date_start']);
+            $qb->andWhere("a.dateStart >='".$start->format("Y-m-d H:i:s")."'");
+        }
+    }
+
 }

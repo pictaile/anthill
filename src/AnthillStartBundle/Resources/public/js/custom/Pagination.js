@@ -7,7 +7,9 @@
         // These options will be used as defaults
         options: {
             facet:'#facet',
-            onselect:function(){}
+            shortUrl:'ajax/',
+            paginator:'.pagination a',
+            onselect:function(self,page){}
         },
 
         _create: function() {
@@ -18,28 +20,39 @@
             var self = this;
             $(this.element).on('submit',self.options.facet,function(e){
                 e.preventDefault();
-                self._send(false, self);
+                self._sendForSubmit(self);
             });
-            $(this.element).on('click','.pagination a',function(e){
+            $(self).on('onselect',self.options.onselect);
+            $(this.element).on('click',self.options.paginator,function(e){
                 e.preventDefault();
-                self._send($(this), self);
+                self._sendForPage($(this), self);
+                $( self ).trigger('onselect',[self,$(this)]);
             });
             $(window).bind('popstate',function(e){
                 location.href = location.href;
             });
         },
 
-        _send: function( ispaginator, elem){
-            datafaset = elem._getFacetData($(elem.options.facet));
+        _sendForSubmit: function( elem){
+            var datafaset = elem._getFacetData($(elem.options.facet));
             var data = {};
-            if(ispaginator != false){
-                data['page'] = elem._getPage(ispaginator);
-            }
             for( var i in datafaset){
                 data[i] =  datafaset[i];
             }
+            elem._send(elem.options.shortUrl, data);
+        },
 
-            $.getJSON( 'ajax/',data, function( data) {
+        _sendForPage:function(page, elem){
+            var data={};
+            var url = page.attr('href');
+            var arr = url.split('?');
+            url = elem.options.shortUrl+'?'+arr[1];
+            elem._send(url, data);
+
+        },
+
+        _send:function(ajax_url,data){
+            $.getJSON(ajax_url,data, function( data) {
                 $('.tenders_list').html(data.page);
             }).always(function(){
                 var arr = this.url.split('?');
@@ -49,6 +62,7 @@
                 var url = location.pathname +"?"+arr[1];
                 history.pushState(null, null, url);
             });
+
         },
 
         _getPage:function(pag){
