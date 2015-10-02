@@ -3,6 +3,7 @@ imports:
     - { resource: security.yml }
     - { resource: services.yml }
     - { resource: sonata.yml }
+    - { resource: knp_paginator.yml }
     - { resource: @AnthillAdminBundle/Resources/config/admin.yml }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
@@ -115,13 +116,3 @@ lunetics_locale:
 #        - ua
 #        - en
 
-knp_paginator:
-    page_range: 5
-    default_options:
-        page_name: page
-        sort_field_name: sort
-        sort_direction_name: direction
-        distinct: true
-    template:
-        pagination: KnpPaginatorBundle:Pagination:sliding.html.twig
-        sortable: KnpPaginatorBundle:Pagination:sortable_link.html.twig
